@@ -35,7 +35,7 @@
     '</tr>'
   };
 
-  $.getJSON('data.json').then(function (data) {
+  $.getJSON('data.json', { _: new Date().getTime() }).then(function (data) {
     var tableData = createTableData(data);
 
     // For now, just render the current week's results
