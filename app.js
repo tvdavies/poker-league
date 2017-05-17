@@ -24,15 +24,19 @@
     playerRow: '<tr>' +
       '<td>{{pos}}</td>' +
       '<td>{{name}}</td>' +
-      '<td>{{week1Pos}}</td>' +
-      '<td>{{week2Pos}}</td>' +
-      '<td>{{week3Pos}}</td>' +
-      '<td>{{week4Pos}}</td>' +
-      '<td>{{week5Pos}}</td>' +
-      '<td>{{week6Pos}}</td>' +
-      '<td>{{week7Pos}}</td>' +
+      '<td>{{#week1Pos}}{{>positionCell}}{{/week1Pos}}</td>' +
+      '<td>{{#week2Pos}}{{>positionCell}}{{/week2Pos}}</td>' +
+      '<td>{{#week3Pos}}{{>positionCell}}{{/week3Pos}}</td>' +
+      '<td>{{#week4Pos}}{{>positionCell}}{{/week4Pos}}</td>' +
+      '<td>{{#week5Pos}}{{>positionCell}}{{/week5Pos}}</td>' +
+      '<td>{{#week6Pos}}{{>positionCell}}{{/week6Pos}}</td>' +
+      '<td>{{#week7Pos}}{{>positionCell}}{{/week7Pos}}</td>' +
       '<td>{{points}}</td>' +
-    '</tr>'
+    '</tr>',
+
+    positionCell: '<span>{{value}}</span>' +
+      '{{#winner}}<span class="glyphicon glyphicon-star" ' +
+      'style="padding-left: 6px; color: gold;" aria-hidden="true"></span>{{/winner}}'
   };
 
   $.getJSON('data.json', { _: new Date().getTime() }).then(function (data) {
@@ -86,7 +90,10 @@
       };
 
       _.each(results, function (val, i) {
-        playerObj['week' + (i + 1) + 'Pos'] = val !== null ? val : '-';
+        playerObj['week' + (i + 1) + 'Pos'] = {
+          value: val !== null ? val : '-',
+          winner: val === 1
+        };
       });
 
       return playerObj;
