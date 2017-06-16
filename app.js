@@ -32,7 +32,7 @@
       '<td>{{#week5Pos}}{{>positionCell}}{{/week5Pos}}</td>' +
       '<td>{{#week6Pos}}{{>positionCell}}{{/week6Pos}}</td>' +
       '<td>{{#week7Pos}}{{>positionCell}}{{/week7Pos}}</td>' +
-      '<td>{{#week8Pos}}{{>positionCell}}{{/week7Pos}}</td>' +
+      '<td>{{#week8Pos}}{{>positionCell}}{{/week8Pos}}</td>' +
       '<td>{{points}}</td>' +
     '</tr>',
 
